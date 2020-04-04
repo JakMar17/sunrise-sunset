@@ -1,31 +1,74 @@
-#container {
+.menu-category{
+  margin-top: 10%;
+  margin-left: 5%;
+  font-size: large;
+}
+
+.search-box {
+  margin-top: 15%;
+  margin-left: 5%;
+  width: 88%;
+  border-radius: 15px;
+  border: thin solid #8c8c8c;
+}
+
+.category-items{
+  margin-left: 8%;
+}
+
+.header-icon {
+  font-size: 180%;
+  color: whitesmoke;
+  vertical-align: middle;
+}
+
+.place-name {
+  font-size: 180%;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  color: whitesmoke;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.country-name {
+  font-size: 120%;
+  text-align: center;
+  color: whitesmoke;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.icon {
+  width: 28%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#container a {
-  text-decoration: none;
+.time-stamp {
+  margin-top: 2%;
+  text-align: center;
+  color: whitesmoke;
+  font-size: 150%;
 }
 
-ion-content ion-toolbar {
-  --background: translucent;
+ion-menu {
+  --ion-background-color: rgb(53,53,53,0.6);
+  --ion-text-color: var(--ion-color-primary-contrast);
+
+  ion-toolbar {
+    --background: transparent;
+  }
+
+  ion-list {
+    --background: transparent;
+
+    ion-item {
+      --background: transparent;
+    --background-activated: transparent;
+    --background-focused: transparent;
+    }
+  }
+
+  ion-item{
+    --background: transparent;
+    --background-activated: transparent;
+    --background-focused: transparent;
+  }
 }

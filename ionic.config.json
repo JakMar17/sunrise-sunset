@@ -1,7 +1,8 @@
 {
   "name": "sunRiseSet",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

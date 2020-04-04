@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SunRiseSet</string>
+    <string name="title_activity_main">SunRiseSet</string>
+    <string name="package_name">si.aptsystems.jakmar17.sunRiseSet</string>
+    <string name="custom_url_scheme">si.aptsystems.jakmar17.sunRiseSet</string>
+</resources>
