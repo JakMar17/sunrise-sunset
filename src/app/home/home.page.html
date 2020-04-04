@@ -29,80 +29,90 @@
   </ion-content>
 </ion-menu>
 
-<div class="ion-page" id="main-content" style="background:transparent;">
-  <ion-grid fixed style="padding: 5%;">
-    <ion-row style="height: fit-content;">
-      <ion-col size="2">
-        <ion-icon 
-         name="menu" 
-         class="header-icon"
-         (click)="toggleMenu()">
-        </ion-icon>
-      </ion-col>
-      <ion-col size="8">
-        
-      </ion-col>
-      <ion-col size="2" style="text-align: right;">
-        <ion-icon 
-         *ngIf="!fav"
-         class="header-icon"
-         name="star-outline" 
-         (click)="setFav()">
-        </ion-icon>
-        <ion-icon 
-         *ngIf="fav"
-         class="header-icon"
-         name="star" 
-         (click)="setFav()">
-        </ion-icon>
-      </ion-col>
-    </ion-row>
-    <ion-row style="height:5%;"></ion-row>
-    <ion-row>
-      <ion-col size="12" class="place-name">
-        Opatje selo
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12" class="country-name">
-        Slovenia
-      </ion-col>
-    </ion-row>
-    <ion-row style="height:5%;"></ion-row>
-    <ion-row>
-      <ion-col size="12">
-          <img class="icon" src="../../assets/images/sunrise2.png"/>
-      </ion-col>
-    </ion-row>
-    <ion-row class="time-stamp">
-      <ion-col size="12">
-        06:30
-      </ion-col>
-    </ion-row>
-    <ion-row style="height:5%;"></ion-row>
-    <ion-row>
-      <ion-col size="12">
-          <img class="icon" src="../../assets/images/sun2.png"/>
-      </ion-col>
-    </ion-row>
-    <ion-row class="time-stamp">
-      <ion-col size="12">
-        06:30
-      </ion-col>
-    </ion-row>
-    <ion-row style="height:5%;"></ion-row>
-    <ion-row>
-      <ion-col size="12">
-          <img class="icon" src="../../assets/images/sunset2.png"/>
-      </ion-col>
-    </ion-row>
-    <ion-row class="time-stamp">
-      <ion-col size="12">
-        06:30
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">
+    <ion-refresher-content>
+      
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="ion-page" id="main-content" style="background:transparent;">
+    <ion-grid fixed style="padding: 5%;">
+      <ion-row style="height: fit-content;">
+        <ion-col size="2">
+          <ion-icon 
+           name="menu" 
+           class="header-icon"
+           (click)="toggleMenu()">
+          </ion-icon>
+        </ion-col>
+        <ion-col size="8">
+          
+        </ion-col>
+        <ion-col size="2" style="text-align: right;">
+          <ion-icon 
+           *ngIf="!fav"
+           class="header-icon"
+           name="star-outline" 
+           (click)="setFav()">
+          </ion-icon>
+          <ion-icon 
+           *ngIf="fav"
+           class="header-icon"
+           name="star" 
+           (click)="setFav()">
+          </ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row style="height:5%;"></ion-row>
+      <ion-row>
+        <ion-col size="12" class="place-name">
+          Current location
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="country-name">
+          
+        </ion-col>
+      </ion-row>
+      <ion-row style="height:5%;"></ion-row>
+      <ion-row>
+        <ion-col size="12">
+            <img class="icon" src="../../assets/images/sunrise2.png"/>
+        </ion-col>
+      </ion-row>
+      <ion-row class="time-stamp">
+        <ion-col size="12">
+          {{sun?.sunrise}}
+        </ion-col>
+      </ion-row>
+      <ion-row style="height:5%;"></ion-row>
+      <ion-row>
+        <ion-col size="12">
+            <img class="icon" src="../../assets/images/sun2.png"/>
+        </ion-col>
+      </ion-row>
+      <ion-row class="time-stamp">
+        <ion-col size="12">
+          {{sun?.solar_noon}}
+        </ion-col>
+      </ion-row>
+      <ion-row style="height:5%;"></ion-row>
+      <ion-row>
+        <ion-col size="12">
+            <img class="icon" src="../../assets/images/sunset2.png"/>
+        </ion-col>
+      </ion-row>
+      <ion-row class="time-stamp">
+        <ion-col size="12">
+          {{sun?.sunset}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+
 
 <script>
   async function openMenu() {
