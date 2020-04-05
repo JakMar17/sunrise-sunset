@@ -29,7 +29,11 @@
   </ion-content>
 </ion-menu>
 
-<ion-content>
+<ion-content
+  [scrollEvents]="true"
+  (ionScrollStart)="logScrollStart()"
+  (ionScroll)="logScrolling($event)"
+  (ionScrollEnd)="logScrollEnd()">
   <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">
     <ion-refresher-content>
       
@@ -37,7 +41,7 @@
   </ion-refresher>
 
   <div class="ion-page" id="main-content" style="background:transparent;">
-    <ion-grid fixed style="padding: 5%;">
+    <ion-grid style="padding: 5%;">
       <ion-row style="height: fit-content;">
         <ion-col size="2">
           <ion-icon 
@@ -67,12 +71,12 @@
       <ion-row style="height:5%;"></ion-row>
       <ion-row>
         <ion-col size="12" class="place-name">
-          Current location
+          {{address?.city}}
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12" class="country-name">
-          
+          {{address?.country}}
         </ion-col>
       </ion-row>
       <ion-row style="height:5%;"></ion-row>

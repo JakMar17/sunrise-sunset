@@ -5,6 +5,8 @@ import { Geolocation } from '@capacitor/core';
 import { SunAPIService } from '../services/api/sun-api.service';
 import { SunriseSunset } from '../classes/SunriseSunset';
 import { TimeConvertService } from '../services/timeConvert/time-convert.service';
+import { AddressService } from '../services/api/address.service';
+import { Address } from '../classes/Address';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +19,14 @@ export class HomePage {
     private screenOrientation: ScreenOrientation,
     private menuController: MenuController,
     private sunAPI: SunAPIService,
+    private addressAPI: AddressService,
     private timeConverter: TimeConvertService
   ) {}
 
   public fav:boolean = false;
   public currentLatitude: any;
   public currentLongitude: any;
+  public address: Address;
 
   public sun: SunriseSunset;
 
@@ -43,6 +47,19 @@ export class HomePage {
     const position = await Geolocation.getCurrentPosition();
     this.currentLatitude = position.coords.latitude;
     this.currentLongitude = position.coords.longitude;
+    console.log(this.currentLatitude);
+    console.log(this.currentLongitude);
+    this.addressAPI.getAddress(this.currentLatitude, this.currentLongitude).then(
+      (data) => {
+        this.address = data.address;
+        if (this.address.city == null)
+          this.address.city = "Current location";
+        else if (this.address.city.length >= 20) {
+          this.address.city = this.address.city.substring(0, 20) + "..."
+        }
+        console.log(this.address)
+      }
+    );
   }
   
   async getTodaySunInfo() {
